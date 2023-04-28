@@ -22,9 +22,9 @@ Compared with `STHV-Net`:
 ![](assets/p2.png)
 
 ​	By modifying the loss function, we are now able to optimize the whole network under the guidance of the absolute percentage hypervolume error (direct objective). A penalty term (related to the variance of outputs) is added to the percentage hypervolume error and it decays with training epoch count, and thus the network cannot ignore inputs and output 0s in all cases to stuck the training process (a gradient clip will make the training more stable too). The new loss function is shown in the following formula, we set $\beta_0=0.1$ and $w=0.8$. 
-$$
-\mathcal{L}=\left|\frac{\widetilde{HV}_\theta-HV}{HV} \right|-\beta_0*w^t*log(var(\widetilde{HV}_\theta))
-$$
+
+![](assets/p3.png)
+
 ​	By incorporating all the techniques mentioned above, the new model can achieve much better performance than the original model. The approximation loss is reported in the following form.
 
 | m    | MaskedModel-2 | MaskedModel-4 |
