@@ -15,28 +15,16 @@ Compared with `STHV-Net`:
 
 ​	Then we redesign the network. The decoder module of Set Transformer is removed, and the scale of the decoder module of the original STHV-Net is significantly reduced. Then we add a trainable query to the input set to aggregate features (Yes, like the [CLS] token in language models). The comparison results of the new and old model are as follows
 
-
-
 ![image-20230428125323876](assets/p1.png)
-
-
 
 ​	The mask strategy is shown in the following figure, where an `X` in position `(a, b)` indicates that `a` should not be noticed the existence of `b`, while an `O` indicates the contrary:
 
-
-
 ![](assets/p2.png)
 
-
-
 ​	By modifying the loss function, we are now able to optimize the whole network under the guidance of the absolute percentage hypervolume error (direct objective). A penalty term (related to the variance of outputs) is added to the percentage hypervolume error and it decays with training epoch count, and thus the network cannot ignore inputs and output 0s in all cases to stuck the training process (a gradient clip will make the training more stable too). The new loss function is shown in the following formula, we set $\beta_0=0.1$ and $w=0.8$. 
-
-
 $$
 \mathcal{L}=\left|\frac{\widetilde{HV}_\theta-HV}{HV} \right|-\beta_0*w^t*log(var(\widetilde{HV}_\theta))
 $$
-
-
 ​	By incorporating all the techniques mentioned above, the new model can achieve much better performance than the original model. The approximation loss is reported in the following form.
 
 | m    | MaskedModel-2 | MaskedModel-4 |
