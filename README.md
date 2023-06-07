@@ -1,6 +1,10 @@
 # STHV-Net
 STHV-Net: Hypervolume Approximation based on Set Transformer
 
+**ACKNOWLEDGEMENT**
+This project was formerly attempted by Mr. Weiyu Chen during his studies at SUSTech. Therefore, the authors of this paper would like to express their gratitude to him for his attempt and effort on this project.
+
+
 ## **Notes For Original Results**
 
 For whom might be interested in reproducing the results in the paper, please use the `STHV-Net-...` models in `models/M[objective_num]/old/*`.  **To make sure the accuracy of approximation, solution sets with sizes less than 100 should to be supplemented with 0 vectors until their size reaches 100**
